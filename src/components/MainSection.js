@@ -10,16 +10,21 @@ const list = [
 ];
 
 const MainSection = (props) => {
+  const [mainlist, setli] = useState(list);
+  const [aya, setaya] = useState(0);
+  function appendList(nayaList){
+    
+    setli([...mainlist, nayaList]);
+  }
   
   return (
     <div className="main-section">
       {props.active === "INBOX" && (
-        <Inbox list={} append={} />
+        <Inbox list={mainlist} append={appendList}/>                                         
       )}
-      {props.active === "TODAY" && <Today list={} />}
-      {props.active === "NEXT" && <Next7Days list={} />}
+      {props.active === "TODAY" && <Today list={mainlist} />}
+      {props.active === "NEXT" && <Next7Days list={mainlist} />}
     </div>
   );
 };
-
 export default MainSection;
